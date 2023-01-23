@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"go_cloud_disk/models"
+	"go_cloud_disk/core/models"
 	"testing"
 	"xorm.io/xorm"
 )
