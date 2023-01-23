@@ -10,8 +10,13 @@
 ## Command
 
 ```text
-goctl api new core	# generate folder core
+# generate folder core
+goctl api new core
+
 cd core
+# start server
 go run core.go -f etc/c
+# generate code by api file (pwd: .core)
+goctl api go -api core.api -dir . -style go_zero
 ```
 
