@@ -5,6 +5,9 @@ service core-api {
 	// user detail
 	@handler UserDetail
 	get /user/detail (UserDetailRequest) returns (UserDetailResponse)
+	// send email code
+	@handler SendEmailCode
+	post /email/code/send (SendEmailCodeRequest) returns (SendEmailResponse)
 }
 
 type LoginRequest {
@@ -24,3 +27,9 @@ type UserDetailResponse {
 	Name  string `json:"name"`
 	Email string `json:"email"`
 }
+
+type SendEmailCodeRequest {
+	Email string `json:"email"`
+}
+
+type SendEmailResponse {}
