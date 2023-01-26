@@ -24,4 +24,16 @@ type SendEmailCodeRequest struct {
 }
 
 type SendEmailResponse struct {
+	Message string `json:"message"`
+}
+
+type UserRegisterRequest struct {
+	Name     string `json:"name"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+	Code     string `json:"code"`
+}
+
+type UserRegisterResponse struct {
+	Message string `json:"message"`
 }

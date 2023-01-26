@@ -8,6 +8,9 @@ service core-api {
 	// send email code
 	@handler SendEmailCodeRegister
 	post /email/code/send/register (SendEmailCodeRequest) returns (SendEmailResponse)
+	// user register
+	@handler UserRegister
+	post /user/register (UserRegisterRequest) returns (UserRegisterResponse)
 }
 
 type LoginRequest {
@@ -32,4 +35,17 @@ type SendEmailCodeRequest {
 	Email string `json:"email"`
 }
 
-type SendEmailResponse {}
+type SendEmailResponse {
+	Message string `json:"message"`
+}
+
+type UserRegisterRequest {
+	Name     string `json:"name"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+	Code     string `json:"code"`
+}
+
+type UserRegisterResponse {
+	Message string `json:"message"`
+}

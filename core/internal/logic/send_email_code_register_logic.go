@@ -37,13 +37,16 @@ func (l *SendEmailCodeRegisterLogic) SendEmailCodeRegister(req *types.SendEmailC
 		err = errors.New("this email is already registered")
 		return
 	}
-
+	// 1. generate random code
 	code := helper.RandCode()
-	// store email code in Redis
+	// 2. store email code in Redis
 	models.RDB.Set(l.ctx, req.Email, code, define.CodeExpireTime)
+	// 3. send email
 	err = helper.SendMailCode(req.Email, code)
 	if err != nil {
 		return nil, err
 	}
+	resp = new(types.SendEmailResponse)
+	resp.Message = "the code has been sent to your email, please check your email"
 	return
 }

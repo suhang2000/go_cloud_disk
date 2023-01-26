@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/jordan-wright/email"
+	uuid "github.com/satori/go.uuid"
 	"go_cloud_disk/core/define"
 	"math/rand"
 	"net/textproto"
@@ -64,4 +65,8 @@ func RandCode() string {
 func init() {
 	rand.Seed(time.Now().UnixNano())
 	//println(time.Now().UnixNano())
+}
+
+func UUID() string {
+	return uuid.NewV4().String()
 }
