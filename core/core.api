@@ -6,8 +6,8 @@ service core-api {
 	@handler UserDetail
 	get /user/detail (UserDetailRequest) returns (UserDetailResponse)
 	// send email code
-	@handler SendEmailCode
-	post /email/code/send (SendEmailCodeRequest) returns (SendEmailResponse)
+	@handler SendEmailCodeRegister
+	post /email/code/send/register (SendEmailCodeRequest) returns (SendEmailResponse)
 }
 
 type LoginRequest {

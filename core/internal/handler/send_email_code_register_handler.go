@@ -9,7 +9,7 @@ import (
 	"go_cloud_disk/core/internal/types"
 )
 
-func SendEmailCodeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func SendEmailCodeRegisterHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req types.SendEmailCodeRequest
 		if err := httpx.Parse(r, &req); err != nil {
@@ -17,8 +17,8 @@ func SendEmailCodeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := logic.NewSendEmailCodeLogic(r.Context(), svcCtx)
-		resp, err := l.SendEmailCode(&req)
+		l := logic.NewSendEmailCodeRegisterLogic(r.Context(), svcCtx)
+		resp, err := l.SendEmailCodeRegister(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

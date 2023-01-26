@@ -7,7 +7,9 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/jordan-wright/email"
 	"go_cloud_disk/core/define"
+	"math/rand"
 	"net/textproto"
+	"time"
 )
 
 func Md5(s string) string {
@@ -48,4 +50,18 @@ func SendMailCode(mail, code string) error {
 		return err
 	}
 	return nil
+}
+
+func RandCode() string {
+	s := []rune("1234567890")
+	code := make([]rune, define.CodeLength)
+	for i := 0; i < define.CodeLength; i++ {
+		code[i] = s[rand.Intn(len(s))]
+	}
+	return string(code)
+}
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+	//println(time.Now().UnixNano())
 }
