@@ -3,7 +3,7 @@ package models
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/redis/go-redis/v9"
-	"go_cloud_disk/core/internal/config"
+	"go_cloud_disk/core/define"
 	"log"
 	"xorm.io/xorm"
 )
@@ -17,11 +17,11 @@ func InitMySQL(dataSource string) *xorm.Engine {
 	return engine
 }
 
-func InitRedis(c config.Config) *redis.Client {
+func InitRedis(addr string) *redis.Client {
 	var rdb = redis.NewClient(&redis.Options{
-		Addr:     c.Redis.Addr,
-		Password: c.Redis.Password, // password set
-		DB:       c.Redis.DB,       // use default DB
+		Addr:     addr,
+		Password: define.RedisPassword, // password set
+		//DB:       c.Redis.DB,           // use default DB
 	})
 	return rdb
 }

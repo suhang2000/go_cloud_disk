@@ -10,8 +10,6 @@ type Config struct {
 		Datasource string
 	}
 	Redis struct {
-		Addr     string
-		Password string
-		DB       int
+		Addr string
 	}
 }

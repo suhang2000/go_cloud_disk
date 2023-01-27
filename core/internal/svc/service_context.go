@@ -17,6 +17,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config: c,
 		Engine: models.InitMySQL(c.Mysql.Datasource),
-		RDB:    models.InitRedis(c),
+		RDB:    models.InitRedis(c.Redis.Addr),
 	}
 }

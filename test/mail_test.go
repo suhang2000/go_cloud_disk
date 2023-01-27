@@ -41,13 +41,13 @@ func TestSendEmail(t *testing.T) {
 	code := "123123"
 	e := &email.Email{
 		To:      []string{mail},
-		From:    "Cloud Disk Sender <" + define.ConfigEmail.Email + ">",
+		From:    "Cloud Disk Sender <" + define.EmailSender + ">",
 		Subject: "send code",
 		HTML:    []byte("your code: <h1>" + code + "</h1>"),
 		Headers: textproto.MIMEHeader{},
 	}
 
-	auth := LoginAuth(define.ConfigEmail.Email, define.ConfigEmail.Password)
+	auth := LoginAuth(define.EmailSender, define.EmailPassword)
 	err := e.SendWithStartTLS("smtp.office365.com:587", auth, &tls.Config{
 		InsecureSkipVerify: true,
 		ServerName:         "smtp.office365.com",
