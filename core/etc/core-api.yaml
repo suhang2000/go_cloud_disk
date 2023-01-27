@@ -1,3 +1,11 @@
 Name: core-api
 Host: 0.0.0.0
 Port: 8888
+
+Mysql:
+  DataSource: root:root@tcp(127.0.0.1:3306)/go_cloud_disk?charset=utf8mb4&parseTime=True&loc=Local
+
+Redis:
+  Addr: localhost:6379
+  Password: "123456"
+  DB: 0
