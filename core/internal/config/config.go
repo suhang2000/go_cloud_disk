@@ -12,4 +12,7 @@ type Config struct {
 	Redis struct {
 		Addr string
 	}
+	Minio struct {
+		Endpoint string
+	}
 }

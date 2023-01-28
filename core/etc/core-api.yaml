@@ -7,3 +7,6 @@ Mysql:
 
 Redis:
   Addr: localhost:6379
+
+Minio:
+  Endpoint: 127.0.0.1:9000

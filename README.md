@@ -39,5 +39,9 @@ goctl api go -api core.api -dir . -style go_zero
 ### User Module
 
 - Login with JWT
-- Register by Email
+- Registration by email, with temporary verification code stored in Redis
 - Query User Info
+
+### Repository Pool
+
+- Upload File

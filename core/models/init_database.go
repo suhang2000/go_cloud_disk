@@ -2,6 +2,7 @@ package models
 
 import (
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/minio/minio-go"
 	"github.com/redis/go-redis/v9"
 	"go_cloud_disk/core/define"
 	"log"
@@ -24,4 +25,19 @@ func InitRedis(addr string) *redis.Client {
 		//DB:       c.Redis.DB,           // use default DB
 	})
 	return rdb
+}
+
+func InitMinIO(endpoint string) *minio.Client {
+	//endpoint := "127.0.0.1:9000"
+	//accessKeyID := define.MinioId
+	//secretAccessKey := define.MinioKey
+	//useSSL := false
+
+	// Initialize minio client object.
+	client, err := minio.New(endpoint, define.MinioId, define.MinioKey, false)
+	if err != nil {
+		log.Printf("Error creating MinIO engine: %v", err)
+		return nil
+	}
+	return client
 }

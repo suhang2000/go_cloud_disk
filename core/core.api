@@ -11,6 +11,9 @@ service core-api {
 	// user register
 	@handler UserRegister
 	post /user/register (UserRegisterRequest) returns (UserRegisterResponse)
+	// upload file
+	@handler FileUpload
+	post /file/upload (FileUploadRequest) returns (FileUploadResponse)
 }
 
 type LoginRequest {
@@ -48,4 +51,16 @@ type UserRegisterRequest {
 
 type UserRegisterResponse {
 	Message string `json:"message"`
+}
+
+type FileUploadRequest {
+	Hash string `json:"hash,optional"`
+	Name string `json:"name,optional"`
+	Ext  string `json:"ext,optional"`
+	Size int64  `json:"size,optional"`
+	Path string `json:"path,optional"`
+}
+
+type FileUploadResponse {
+	Identity string `json:"identity"`
 }

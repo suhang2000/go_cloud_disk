@@ -22,6 +22,9 @@ var CodeLength = 6
 // CodeExpireTime expire time of email code
 var CodeExpireTime = time.Second * 300
 
+// BucketName bucket name of MinIO
+var BucketName = "bucket-cloud-disk"
+
 var (
 	MinioKey      string
 	EmailSender   string
