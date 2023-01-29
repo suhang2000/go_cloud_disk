@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"go_cloud_disk/core/helper"
 	"go_cloud_disk/core/models"
+	"log"
 	"net/http"
 	"path"
 
@@ -45,7 +46,12 @@ func FileUploadHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 		if has {
-			httpx.OkJsonCtx(r.Context(), w, &types.FileUploadResponse{Identity: rp.Identity})
+			log.Println("duplicate file: ", rp.Name)
+			httpx.OkJsonCtx(r.Context(), w, &types.FileUploadResponse{
+				Identity: rp.Identity,
+				Ext:      rp.Ext,
+				Name:     rp.Name,
+			})
 			return
 		}
 		// 3. store file into MinIO

@@ -11,9 +11,18 @@ service core-api {
 	// user register
 	@handler UserRegister
 	post /user/register (UserRegisterRequest) returns (UserRegisterResponse)
+}
+
+@server (
+	middleware: Auth
+)
+service core-api {
 	// upload file
 	@handler FileUpload
 	post /file/upload (FileUploadRequest) returns (FileUploadResponse)
+	// user associated strorage
+	@handler UserRepositorySave
+	post /user/repository/save (UserRepositorySaveRequest) returns (UserRepositorySaveResponse)
 }
 
 type LoginRequest {
@@ -62,5 +71,18 @@ type FileUploadRequest {
 }
 
 type FileUploadResponse {
+	Identity string `json:"identity"`
+	Ext      string `json:"ext"`
+	Name     string `json:"name"`
+}
+
+type UserRepositorySaveRequest {
+	ParentId           int64  `json:"parentId"`
+	RepositoryIdentity string `json:"repositoryIdentity"`
+	Ext                string `json:"ext"`
+	Name               string `json:"name"`
+}
+
+type UserRepositorySaveResponse {
 	Identity string `json:"identity"`
 }

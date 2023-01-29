@@ -41,6 +41,8 @@ func (l *FileUploadLogic) FileUpload(req *types.FileUploadRequest) (resp *types.
 
 	resp = &types.FileUploadResponse{
 		Identity: rp.Identity,
+		Ext:      rp.Ext,
+		Name:     rp.Name,
 	}
 	return
 }

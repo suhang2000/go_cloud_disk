@@ -3,6 +3,7 @@ package helper
 import (
 	"crypto/md5"
 	"crypto/tls"
+	"errors"
 	"fmt"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/jordan-wright/email"
@@ -22,6 +23,9 @@ func GenerateToken(id int, identity, name string) (string, error) {
 		Id:       id,
 		Identity: identity,
 		Name:     name,
+		RegisteredClaims: jwt.RegisteredClaims{
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour)),
+		},
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, userClaim)
 	tokenString, err := token.SignedString(define.JwtKey)
@@ -29,6 +33,24 @@ func GenerateToken(id int, identity, name string) (string, error) {
 		return "", err
 	}
 	return tokenString, nil
+}
+
+func ParseToken(token string) (*define.UserClaim, error) {
+	if token == "" {
+		return nil, errors.New("unauthorized")
+	}
+	uc := new(define.UserClaim)
+	claims, err := jwt.ParseWithClaims(token, uc, func(token *jwt.Token) (interface{}, error) {
+		return define.JwtKey, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	if claims.Valid {
+		return uc, nil
+	} else {
+		return nil, errors.New("token is invalid")
+	}
 }
 
 // SendMailCode
