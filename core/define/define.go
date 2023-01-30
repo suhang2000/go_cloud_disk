@@ -25,6 +25,9 @@ var CodeExpireTime = time.Second * 300
 // BucketName bucket name of MinIO
 var BucketName = "bucket-cloud-disk"
 
+// PageSize Pagination
+var PageSize = 10
+
 var (
 	MinioKey      string
 	EmailSender   string
