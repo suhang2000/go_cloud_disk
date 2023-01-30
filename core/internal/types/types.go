@@ -83,3 +83,12 @@ type UserFile struct {
 	Path               string `json:"path"`
 	Size               int64  `json:"size"`
 }
+
+type UserFileNameUpdateRequest struct {
+	Identity string `json:"identity"`
+	Name     string `json:"name"`
+}
+
+type UserFileNameUpdateResponse struct {
+	Message string `json:"message"`
+}
