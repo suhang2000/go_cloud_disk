@@ -46,4 +46,4 @@ goctl api go -api core.api -dir . -style go_zero
 
 - Upload File
 - Associate user repository with repository pool
-- List file info by user
+- List file info by user (Pagination)
