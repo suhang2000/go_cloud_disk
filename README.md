@@ -48,3 +48,6 @@ goctl api go -api core.api -dir . -style go_zero
 - Associate UserRepository with RepositoryPool
 - List File Info by User (Pagination)
 - Update File Name
+- Soft Delete User File
+- Create Folder for User
+- Move User File

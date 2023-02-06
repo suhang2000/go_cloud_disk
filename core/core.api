@@ -35,6 +35,9 @@ service core-api {
 	// user file delete
 	@handler UserFileDeleteHandler
 	delete /user/file/delete (UserFileDeleteRequest) returns (UserFileDeleteResponse)
+	// user file move
+	@handler UserFileMoveHandler
+	post /user/file/move (UserFileMoveRequest) returns (UserFileMoveResponse)
 }
 
 type LoginRequest {
@@ -143,5 +146,14 @@ type UserFileDeleteRequest {
 }
 
 type UserFileDeleteResponse {
+	Message string `json:"message"`
+}
+
+type UserFileMoveRequest {
+	Identity       string `json:"identity"`
+	ParentIdentity string `json:"parent_identity"`
+}
+
+type UserFileMoveResponse {
 	Message string `json:"message"`
 }
