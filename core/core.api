@@ -29,6 +29,9 @@ service core-api {
 	// user file name update
 	@handler UserFileNameUpdateHandler
 	post /user/file/name/update (UserFileNameUpdateRequest) returns (UserFileNameUpdateResponse)
+	// create user folder
+	@handler UserFolderCreateHandler
+	post /user/folder/create (UserFolderCreateRequest) returns (UserFolderCreateResponse)
 }
 
 type LoginRequest {
@@ -121,4 +124,13 @@ type UserFileNameUpdateRequest {
 
 type UserFileNameUpdateResponse {
 	Message string `json:"message"`
+}
+
+type UserFolderCreateRequest {
+	ParentId int64  `json:"parent_id"`
+	Name     string `json:"name"`
+}
+
+type UserFolderCreateResponse {
+	Indentity string `json:"indentity"`
 }

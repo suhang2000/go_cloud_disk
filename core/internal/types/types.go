@@ -92,3 +92,12 @@ type UserFileNameUpdateRequest struct {
 type UserFileNameUpdateResponse struct {
 	Message string `json:"message"`
 }
+
+type UserFolderCreateRequest struct {
+	ParentId int64  `json:"parent_id"`
+	Name     string `json:"name"`
+}
+
+type UserFolderCreateResponse struct {
+	Indentity string `json:"indentity"`
+}
