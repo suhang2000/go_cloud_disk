@@ -101,3 +101,11 @@ type UserFolderCreateRequest struct {
 type UserFolderCreateResponse struct {
 	Indentity string `json:"indentity"`
 }
+
+type UserFileDeleteRequest struct {
+	Identity string `json:"identity"`
+}
+
+type UserFileDeleteResponse struct {
+	Message string `json:"message"`
+}
