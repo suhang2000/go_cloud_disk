@@ -32,6 +32,9 @@ service core-api {
 	// create user folder
 	@handler UserFolderCreateHandler
 	post /user/folder/create (UserFolderCreateRequest) returns (UserFolderCreateResponse)
+	// user file delete
+	@handler UserFileDeleteHandler
+	delete /user/file/delete (UserFileDeleteRequest) returns (UserFileDeleteResponse)
 }
 
 type LoginRequest {
@@ -133,4 +136,12 @@ type UserFolderCreateRequest {
 
 type UserFolderCreateResponse {
 	Indentity string `json:"indentity"`
+}
+
+type UserFileDeleteRequest {
+	Identity string `json:"identity"`
+}
+
+type UserFileDeleteResponse {
+	Message string `json:"message"`
 }
