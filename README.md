@@ -55,3 +55,4 @@ goctl api go -api core.api -dir . -style go_zero
 ### Share Module
 
 - Create Share
+- Query Share Details (Auto Update click_num)

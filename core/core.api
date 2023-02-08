@@ -11,6 +11,10 @@ service core-api {
 	// user register
 	@handler UserRegister
 	post /user/register (UserRegisterRequest) returns (UserRegisterResponse)
+	
+	// share basic detail
+	@handler ShareBasicDetailHandler
+	get /share/basic/detail (ShareBasicDetailRequest) returns (ShareBasicDetailResponse)
 }
 
 @server (
@@ -169,4 +173,16 @@ type ShareBasicCreateRequest {
 
 type ShareBasicCreateResponse {
 	Identity string `json:"identity"`
+}
+
+type ShareBasicDetailRequest {
+	ShareBasicIdentity string `json:"share_basic_identity"`
+}
+
+type ShareBasicDetailResponse {
+	RepositoryIdentity string `json:"repository_identity"`
+	Name               string `json:"name"`
+	Ext                string `json:"ext"`
+	Size               int64  `json:"size"`
+	Path               string `json:"path"`
 }

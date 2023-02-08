@@ -127,3 +127,15 @@ type ShareBasicCreateRequest struct {
 type ShareBasicCreateResponse struct {
 	Identity string `json:"identity"`
 }
+
+type ShareBasicDetailRequest struct {
+	ShareBasicIdentity string `json:"share_basic_identity"`
+}
+
+type ShareBasicDetailResponse struct {
+	RepositoryIdentity string `json:"repository_identity"`
+	Name               string `json:"name"`
+	Ext                string `json:"ext"`
+	Size               int64  `json:"size"`
+	Path               string `json:"path"`
+}
