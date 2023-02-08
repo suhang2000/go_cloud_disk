@@ -38,6 +38,10 @@ service core-api {
 	// user file move
 	@handler UserFileMoveHandler
 	post /user/file/move (UserFileMoveRequest) returns (UserFileMoveResponse)
+	
+	// share basic create
+	@handler ShareBasicCreateHandler
+	post /share/basic/create (ShareBasicCreateRequest) returns (ShareBasicCreateResponse)
 }
 
 type LoginRequest {
@@ -156,4 +160,13 @@ type UserFileMoveRequest {
 
 type UserFileMoveResponse {
 	Message string `json:"message"`
+}
+
+type ShareBasicCreateRequest {
+	UserRepositoryIdentity string `json:"user_repository_identity"`
+	ExpiredTime            int    `json:"expired_time"`
+}
+
+type ShareBasicCreateResponse {
+	Identity string `json:"identity"`
 }

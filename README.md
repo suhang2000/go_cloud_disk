@@ -51,3 +51,7 @@ goctl api go -api core.api -dir . -style go_zero
 - Soft Delete User File
 - Create Folder for User
 - Move User File
+
+### Share Module
+
+- Create Share
