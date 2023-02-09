@@ -56,3 +56,4 @@ goctl api go -api core.api -dir . -style go_zero
 
 - Create Share
 - Query Share Details (Auto Update click_num)
+- Save Shared Resource to User Repository

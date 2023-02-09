@@ -46,6 +46,9 @@ service core-api {
 	// share basic create
 	@handler ShareBasicCreateHandler
 	post /share/basic/create (ShareBasicCreateRequest) returns (ShareBasicCreateResponse)
+	// share basic save
+	@handler ShareBasicSaveHandler
+	post /share/basic/save (ShareBasicSaveRequest) returns (ShareBasicSaveResponse)
 }
 
 type LoginRequest {
@@ -185,4 +188,13 @@ type ShareBasicDetailResponse {
 	Ext                string `json:"ext"`
 	Size               int64  `json:"size"`
 	Path               string `json:"path"`
+}
+
+type ShareBasicSaveRequest {
+	RepositoryIdentity string `json:"repository_identity"`
+	ParentId           int64  `json:"parent_id"`
+}
+
+type ShareBasicSaveResponse {
+	UserRepositoryIdentity string `json:"user_repository_identity"`
 }
